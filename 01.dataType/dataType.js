@@ -49,3 +49,23 @@ var Color3;
 var c3 = Color3.Green;
 var colorName = Color2[2];
 console.log("colorName : ", colorName);
+// Any
+var notSure = 4;
+notSure = "maybe a string instead";
+notSure = false;
+notSure.ifItExits();
+notSure.toFixed(); // 성공, toFixed는 존재합니다. (하지만 컴파일러는 검사하지 않음)
+var prettySure = 4;
+// prettySure.toFixed(); // 오류: 프로퍼티 'toFixed'는 'Object'에 존재하지 않습니다.
+var anyList = [1, true, "free"];
+list[1] = 100;
+// Void
+function warnUser() {
+    console.log("This is my warning message");
+}
+var unusable = undefined;
+// unusable = null; // 성공  `--strictNullChecks` 을 사용하지 않을때만
+// Null and Undefined
+// 이 밖에 이 변수들에 할당할 수 있는 값이 없습니다!
+var u = undefined;
+var n = null;

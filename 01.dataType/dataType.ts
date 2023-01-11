@@ -61,6 +61,52 @@ notSure.toFixed(); // 성공, toFixed는 존재합니다. (하지만 컴파일�
 let prettySure: Object = 4;
 // prettySure.toFixed(); // 오류: 프로퍼티 'toFixed'는 'Object'에 존재하지 않습니다.
 
-let list: any[] = [1, true, "free"];
+let anyList: any[] = [1, true, "free"];
 
 list[1] = 100;
+
+// Void
+function warnUser(): void {
+    console.log("This is my warning message");
+}
+
+let unusable: void = undefined;
+// unusable = null; // 성공  `--strictNullChecks` 을 사용하지 않을때만
+
+// Null and Undefined
+// 이 밖에 이 변수들에 할당할 수 있는 값이 없습니다!
+let u: undefined = undefined;
+let n: null = null;
+
+// Never
+// never를 반환한느 함수는 함수의 마지막에 도달할 수 없다.
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// 반환 타입이 never로 추론된다.
+function fail() {
+    return error("Something failed");
+}
+
+// never를 반환하는 함수는 함수의 마지막에 도달할 수 없다.
+function infiniteloop(): never {
+    while (true) {
+    }
+}
+
+// Object
+declare function create(o:object|null) :void;
+
+create({ prop: 0 }); // 성공
+create(null); // 성공
+
+// create(42); // 오류
+// create("string"); // 오류
+// create(false); // 오류
+// create(undefined); // 오류
+
+// Type assertions
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
+let strLength2: number = (someValue as string).length;
