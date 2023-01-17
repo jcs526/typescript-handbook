@@ -174,3 +174,78 @@ class Clock2 implements ClockInterface2 {
     }
     constructor(h: number, m: number) { }
 }
+
+//스태틱
+interface ClockConstructor {
+    new(hour: number, minute: number): ClockInterface3;
+}
+interface ClockInterface3 {
+    tick(): void;
+}
+
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface3 {
+    return new ctor(hour, minute);
+}
+class DigitalClock implements ClockInterface3 {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("beep beep");
+    }
+}
+class AnalogClock implements ClockInterface3 {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("tick tock");
+    }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+let analog = createClock(AnalogClock, 7, 32);
+
+
+//클래스 표현
+interface ClockConstructor2 {
+    new(hour: number, minute: number): ClockInterface4;
+}
+
+interface ClockInterface4 {
+    tick(): void;
+}
+
+const Clock3: ClockConstructor2 = class Clock implements ClockInterface4 {
+    constructor(h: number, m: number) { }
+    tick() {
+        console.log("beep beep");
+    }
+}
+
+// 확장하기
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+
+// 여러조합 생성가능
+interface Shape2 {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square2 extends Shape2, PenStroke {
+    sideLength: number;
+}
+
+let square2 = {} as Square2;
+square2.color = "blue";
+square2.sideLength = 10;
+square2.penWidth = 5.0;
