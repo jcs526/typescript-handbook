@@ -249,3 +249,44 @@ let square2 = {} as Square2;
 square2.color = "blue";
 square2.sideLength = 10;
 square2.penWidth = 5.0;
+
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+function getCounter(): Counter {
+    let counter = (function (start: number) { }) as Counter;
+    counter.interval = 123;
+    counter.reset = function () { };
+    return counter;
+}
+
+class Control {
+    private state: any;
+}
+
+interface SelectableControl extends Control{
+    select() : void;
+}
+
+class Button extends Control implements SelectableControl{
+    select(): void {
+        
+    }
+}
+
+class TextBox extends Control{
+    select(){}
+}
+
+// Error: Property 'state' is missing in type 'Image'.
+/*
+class Image implements SelectableControl{
+    private state:any;
+    select(): void {
+        
+    }
+}
+*/
