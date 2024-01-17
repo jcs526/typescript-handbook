@@ -26,3 +26,6 @@ function buildName2(firstName: string, lastName?: string) {
 let buildName2Result1 = buildName2("Bob");                  // 지금은 바르게 동작
 // let buildName2Result2 = buildName2("Bob", "Adams", "Sr.");  // 오류, 너무 많은 매개변수
 let buildName2Result3 = buildName2("Bob", "Adams");         // 정확함
+
+
+//PR 테스트
