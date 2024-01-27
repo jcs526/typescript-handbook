@@ -17,6 +17,7 @@ function buildName(firstName: string, lastName: string): string {
 // let buildNameResult2 = buildName("Bob", "Adams", "Sr.");  // 오류, 너무 많은 매개변수
 let buildNameResult3 = buildName("Bob", "Adams");         // 정확함
 
+// 선택적 매개변수 ?
 function buildName2(firstName: string, lastName?: string) {
     if (lastName)
         return firstName + " " + lastName;
@@ -26,3 +27,17 @@ function buildName2(firstName: string, lastName?: string) {
 let buildName2Result1 = buildName2("Bob");                  // 지금은 바르게 동작
 // let buildName2Result2 = buildName2("Bob", "Adams", "Sr.");  // 오류, 너무 많은 매개변수
 let buildName2Result3 = buildName2("Bob", "Adams");         // 정확함
+
+// 기본값 할당(js에서도 이제 지원)
+function buildName3(firstName: string, lastName = "Smith") {
+    return firstName + " " + lastName;
+}
+
+// 나머지 매개변수
+function RestParameters(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+}
+
+// employeeName 은 "Joseph Samuel Lucas MacKinzie" 가 될것입니다.
+let employeeName = RestParameters("Joseph", "Samuel", "Lucas", "MacKinzie");
+
